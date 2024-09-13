@@ -1,6 +1,14 @@
+# General modules 
+
 django >4.2,<4.3
 Pillow
 python-decouple
 djangorestframework
+
+
+# Third party modules
+
 markdown
 django-filter
+
+# Deployment modules

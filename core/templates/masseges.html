@@ -6,8 +6,7 @@
                 icon: '{{ message.tags }}',
                 title: '{{ message.tags|title }}!',
                 text: '{{ message }}',
-                showConfirmButton: 'تایید',
-                timer: 3000
+                showConfirmButton: 'Confirm',
             });
         {% endfor %}
     {% endif %}
@@ -27,7 +26,7 @@
     Swal.fire({
                 icon: 'error',
                 title: '{{error}}',
-                showConfirmButton: 'تایید',
+                showConfirmButton: 'Confirm',
             });
         {% endfor %}
         {% endfor %}

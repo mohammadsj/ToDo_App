@@ -10,5 +10,11 @@ djangorestframework
 
 markdown
 django-filter
+drf-yasg[validation]
+
 
 # Deployment modules
+
+# email modules
+
+django-mail-templated

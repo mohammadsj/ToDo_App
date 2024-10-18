@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
 
     services:
       docker:
@@ -26,9 +26,5 @@ jobs:
     - name: Set up Docker Compose
       run: docker-compose up -d
 
-    - name: Run Test flake8
-      run: docker-compose exec -T backend sh -c "flake8"
-
-    - name: Run Test pytest
-      run: docker-compose exec -T backend sh -c "pytest ."
-
+    - name: Run Tests
+      run: docker-compose exec -T backend sh -c "flake8 && pytest ."

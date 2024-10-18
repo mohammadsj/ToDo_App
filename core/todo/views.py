@@ -33,9 +33,9 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # اضافه کردن لیست تمام تسک‌ها به context
-        context["tasks"] = Task.objects.filter(
-            user=self.request.user
-        ).order_by("-updated_date")
+        context["tasks"] = Task.objects.filter(user=self.request.user).order_by(
+            "-updated_date"
+        )
         return context
 
 
@@ -70,9 +70,9 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         # اضافه کردن لیست تمام تسک‌ها به context
-        context["tasks"] = Task.objects.filter(
-            user=self.request.user
-        ).order_by("-updated_date")
+        context["tasks"] = Task.objects.filter(user=self.request.user).order_by(
+            "-updated_date"
+        )
         return context
 
 

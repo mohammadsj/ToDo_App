@@ -88,9 +88,7 @@ class ActivationAPIView(APIView):
 
     def get(self, request, token, *args, **kwargs):
         try:
-            token = jwt.decode(
-                token, settings.SECRET_KEY, algorithms=["HS256"]
-            )
+            token = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
             user_id = token.get("user_id")
         except exceptions.ExpiredSignatureError:
             return Response(
@@ -133,9 +131,7 @@ class ActivationResendAPIView(generics.GenericAPIView):
             to=[user_obj.email],
         )
         EmailThread(message).start()
-        return Response(
-            {"details": "send test email"}, status=status.HTTP_200_OK
-        )
+        return Response({"details": "send test email"}, status=status.HTTP_200_OK)
 
     def get_token_for_user(self, user):
         refresh = RefreshToken.for_user(user)
@@ -158,9 +154,7 @@ class ChangePasswordAPIView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.data)
         if serializer.is_valid():
             # Check old password
-            if not self.object.check_password(
-                serializer.data.get("old_password")
-            ):
+            if not self.object.check_password(serializer.data.get("old_password")):
                 return Response(
                     {"Old Password": ["Wrong Password."]},
                     status=status.HTTP_400_BAD_REQUEST,
@@ -190,9 +184,7 @@ class PasswordResetRequestAPIView(generics.GenericAPIView):
             to=[user_obj.email],
         )
         EmailThread(message).start()
-        return Response(
-            {"details": "send test email"}, status=status.HTTP_200_OK
-        )
+        return Response({"details": "send test email"}, status=status.HTTP_200_OK)
 
     def get_token_for_user(self, user):
         refresh = RefreshToken.for_user(user)
@@ -204,9 +196,7 @@ class PasswordResetConfirmAPIView(generics.GenericAPIView):
 
     def post(self, request, token, *args, **kwargs):
         try:
-            token = jwt.decode(
-                token, settings.SECRET_KEY, algorithms=["HS256"]
-            )
+            token = jwt.decode(token, settings.SECRET_KEY, algorithms=["HS256"])
         except jwt.ExpiredSignatureError:
             return Response(
                 {"detail": "token is expired"},

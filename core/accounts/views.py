@@ -5,18 +5,17 @@ from django.views.generic.edit import FormView
 from django.contrib.auth import login
 from django.contrib import messages
 from .forms import UserCreationForm
+
 # Create your views here.
 
 
 class LoginView(LoginView):
-    template_name = 'accounts/login.html'
-    fields = "username","password"
+    template_name = "accounts/login.html"
+    fields = "username", "password"
     redirect_authenticated_user = True
 
     def get_success_url(self):
-        messages.success(
-            self.request, f"Hi {self.request.user.username} Logged in"
-        )
+        messages.success(self.request, f"Hi {self.request.user.username} Logged in")
 
         return reverse_lazy("todo:TaskListView")
 
@@ -28,8 +27,8 @@ class LoginView(LoginView):
 
 
 class SignUpView(FormView):
-    
-    template_name = 'accounts/signup.html'
+
+    template_name = "accounts/signup.html"
     form_class = UserCreationForm
     redirect_authenticated_user = True
     success_url = reverse_lazy("todo:TaskListView")
@@ -38,12 +37,16 @@ class SignUpView(FormView):
         user = form.save()
         if user is not None:
             login(self.request, user)
-            messages.success(self.request, f'Hi {self.request.user.username} Welcome to my site')
-        return super(SignUpView,self).form_valid(form)
+            messages.success(
+                self.request, f"Hi {self.request.user.username} Welcome to my site"
+            )
+        return super(SignUpView, self).form_valid(form)
+
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect("task_list")
-        return super(SignUpView, self).get(*args, **kwargs)    
+        return super(SignUpView, self).get(*args, **kwargs)
+
     def form_invalid(self, form):
         # error handling
         context = self.get_context_data(form=form)

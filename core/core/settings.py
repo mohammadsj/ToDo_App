@@ -36,7 +36,6 @@ ALLOWED_HOSTS = config(
 # Application definition
 
 INSTALLED_APPS = [
-<<<<<<< Updated upstream
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -47,7 +46,6 @@ INSTALLED_APPS = [
     'todo',
     'rest_framework',
     'drf_yasg',
-=======
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -61,7 +59,6 @@ INSTALLED_APPS = [
     "drf_yasg",
     "rest_framework_simplejwt",
     "mail_templated",
->>>>>>> Stashed changes
 ]
 
 MIDDLEWARE = [
@@ -158,8 +155,6 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # rest framework settings
-<<<<<<< Updated upstream
-=======
 
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": [
@@ -180,4 +175,4 @@ EMAIL_HOST_PASSWORD = ""
 EMAIL_PORT = 25
 
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
->>>>>>> Stashed changes
+

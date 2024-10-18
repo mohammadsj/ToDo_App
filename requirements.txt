@@ -1,20 +1,20 @@
-# General modules 
-
+# General modules
 django >4.2,<4.3
 Pillow
 python-decouple
 djangorestframework
 
-
 # Third party modules
-
 markdown
 django-filter
-drf-yasg[validation]
-
 
 # Deployment modules
 
 # email modules
-
 django-mail-templated
+
+# reformat modules Testing
+black
+flake8
+pytest
+pytest-django

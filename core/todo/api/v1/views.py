@@ -7,12 +7,8 @@ from .serializers import TaskSerializer
 class ToDoModelViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     serializer_class = TaskSerializer
-<<<<<<< Updated upstream
-    queryset = Task.objects.all()
-=======
     queryset = Task.objects.all()
 
     def get_queryset(self):
         # Returns only tasks that belong to the logged-in user
         return Task.objects.filter(user=self.request.user)
->>>>>>> Stashed changes

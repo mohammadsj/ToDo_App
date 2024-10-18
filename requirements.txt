@@ -1,20 +1,30 @@
-# General modules
+# general modules 
 django >4.2,<4.3
 Pillow
 python-decouple
-djangorestframework
+djangorestframework-simplejwt
 
-# Third party modules
+# third party modules
 markdown
 django-filter
+drf-yasg[validation]
+faker
+django-celery-beat
 
-# Deployment modules
+# deployment modules
+
 
 # email modules
 django-mail-templated
+
 
 # reformat modules Testing
 black
 flake8
 pytest
 pytest-django
+
+
+# background processes and chash
+redis
+celery

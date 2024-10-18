@@ -1,10 +1,6 @@
 from django.db import models
-<<<<<<< Updated upstream
 from django.contrib.auth.models import User
-=======
 from django.contrib.auth import get_user_model
-
->>>>>>> Stashed changes
 # Create your models here.
 
 

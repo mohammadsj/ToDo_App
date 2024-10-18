@@ -12,3 +12,15 @@ markdown
 django-filter
 
 # Deployment modules
+<<<<<<< Updated upstream
+=======
+
+# email modules
+django-mail-templated
+
+# reformat modules Testing
+black
+flake8
+pytest
+pytest-django
+>>>>>>> Stashed changes

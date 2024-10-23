@@ -1,6 +1,15 @@
 version: "3.9"
 
 services:
+  redis:
+    container_name: redis
+    image: redis
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 60 1 --loglevel warning
+
+
   backend:
     build: .
     container_name: backend
@@ -10,5 +19,26 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - SECRET_KEY=test
+      - SECRET_KEY=your_secret_key_here
       - DEBUG=True
+    depends_on:
+      - redis
+
+  worker:
+    build: .
+    command: celery -A core worker --loglevel=info
+    depends_on:
+      - redis
+      - backend
+    volumes:
+      - ./core:/app
+
+
+  beat:
+    build: .
+    command: celery -A core beat --loglevel=info -S django_celery_beat.schedulers:DatabaseScheduler
+    depends_on:
+      - redis
+      - backend
+    volumes:
+      - ./core:/app

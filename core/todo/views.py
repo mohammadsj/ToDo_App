@@ -3,9 +3,10 @@ from django.views.generic.list import ListView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from .models import Task
 from django.views import View
-from django.shortcuts import redirect
+from django.shortcuts import redirect, HttpResponse
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .tasks import complete_task
 
 # Create your views here.
 
@@ -88,3 +89,8 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
 
     def get_queryset(self):
         return self.model.objects.filter(user=self.request.user)
+
+
+def delete_complete_task(request):
+    complete_task.delay()
+    return HttpResponse("<h1>task complete </h1>")
